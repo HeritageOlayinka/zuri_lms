@@ -10,15 +10,15 @@ class Question(models.Model):
     pub_note = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.question_text
+        return f"{self.question_text}"
 
 
 
 class Choices(models.Model):
     # id = models.PrimaryKey(auto_increment= True)
-    question = models.ForeignKey(Question, on_delete= models.CASCADE)
+    question = models.ForeignKey(Question,  on_delete= models.CASCADE)
     choice_answer =models.CharField(max_length=20)
-    votes = models.IntegerField(default=0)
+    votes = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.choice_answer
+        return f"{self.question} --> {self.choice_answer}"
